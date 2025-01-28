@@ -1,48 +1,29 @@
 [
   {
-    "id": "gl-draw-polygon-fill.cold",
+    "id": "gl-draw-polygon-fill",
     "type": "fill",
     "filter": [
       "all",
-      [
-        "==",
-        "$type",
-        "Polygon"
-      ]
+      ["==", "$type", "Polygon"]
     ],
     "paint": {
       "fill-color": [
         "case",
-        [
-          "==",
-          [
-            "get",
-            "active"
-          ],
-          "true"
-        ],
+        ["==", ["get", "active"], "true"],
         "#fbb03b",
         "#3bb2d0"
       ],
       "fill-opacity": 0.1
     },
-    "source": "mapbox-gl-draw-cold"
+    "source": "mapbox-gl-draw"
   },
   {
-    "id": "gl-draw-lines.cold",
+    "id": "gl-draw-lines",
     "type": "line",
     "filter": [
       "any",
-      [
-        "==",
-        "$type",
-        "LineString"
-      ],
-      [
-        "==",
-        "$type",
-        "Polygon"
-      ]
+      ["==", "$type", "LineString"],
+      ["==", "$type", "Polygon"]
     ],
     "layout": {
       "line-cap": "round",
@@ -51,474 +32,114 @@
     "paint": {
       "line-color": [
         "case",
-        [
-          "==",
-          [
-            "get",
-            "active"
-          ],
-          "true"
-        ],
+        ["==", ["get", "active"], "true"],
         "#fbb03b",
         "#3bb2d0"
       ],
       "line-dasharray": [
         "case",
-        [
-          "==",
-          [
-            "get",
-            "active"
-          ],
-          "true"
-        ],
-        [
-          0.2,
-          2
-        ],
-        [
-          2,
-          0
-        ]
+        ["==", ["get", "active"], "true"],
+        [0.2, 2],
+        [2, 0]
       ],
       "line-width": 2
     },
-    "source": "mapbox-gl-draw-cold"
+    "source": "mapbox-gl-draw"
   },
   {
-    "id": "gl-draw-point-outer.cold",
+    "id": "gl-draw-point-outer",
     "type": "circle",
     "filter": [
       "all",
-      [
-        "==",
-        "$type",
-        "Point"
-      ],
-      [
-        "==",
-        "meta",
-        "feature"
-      ]
+      ["==", "$type", "Point"],
+      ["==", "meta", "feature"]
     ],
     "paint": {
       "circle-radius": [
         "case",
-        [
-          "==",
-          [
-            "get",
-            "active"
-          ],
-          "true"
-        ],
+        ["==", ["get", "active"], "true"],
         7,
         5
       ],
       "circle-color": "#fff"
     },
-    "source": "mapbox-gl-draw-cold"
+    "source": "mapbox-gl-draw"
   },
   {
-    "id": "gl-draw-point-inner.cold",
+    "id": "gl-draw-point-inner",
     "type": "circle",
     "filter": [
       "all",
-      [
-        "==",
-        "$type",
-        "Point"
-      ],
-      [
-        "==",
-        "meta",
-        "feature"
-      ]
+      ["==", "$type", "Point"],
+      ["==", "meta", "feature"]
     ],
     "paint": {
       "circle-radius": [
         "case",
-        [
-          "==",
-          [
-            "get",
-            "active"
-          ],
-          "true"
-        ],
+        ["==", ["get", "active"], "true"],
         5,
         3
       ],
       "circle-color": [
         "case",
-        [
-          "==",
-          [
-            "get",
-            "active"
-          ],
-          "true"
-        ],
+        ["==", ["get", "active"], "true"],
         "#fbb03b",
         "#3bb2d0"
       ]
     },
-    "source": "mapbox-gl-draw-cold"
+    "source": "mapbox-gl-draw"
   },
   {
-    "id": "gl-draw-vertex-outer.cold",
+    "id": "gl-draw-vertex-outer",
     "type": "circle",
     "filter": [
       "all",
-      [
-        "==",
-        "$type",
-        "Point"
-      ],
-      [
-        "==",
-        "meta",
-        "vertex"
-      ],
-      [
-        "!=",
-        "mode",
-        "simple_select"
-      ]
+      ["==", "$type", "Point"],
+      ["==", "meta", "vertex"],
+      ["!=", "mode", "simple_select"]
     ],
     "paint": {
       "circle-radius": [
         "case",
-        [
-          "==",
-          [
-            "get",
-            "active"
-          ],
-          "true"
-        ],
+        ["==", ["get", "active"], "true"],
         7,
         5
       ],
       "circle-color": "#fff"
     },
-    "source": "mapbox-gl-draw-cold"
+    "source": "mapbox-gl-draw"
   },
   {
-    "id": "gl-draw-vertex-inner.cold",
+    "id": "gl-draw-vertex-inner",
     "type": "circle",
     "filter": [
       "all",
-      [
-        "==",
-        "$type",
-        "Point"
-      ],
-      [
-        "==",
-        "meta",
-        "vertex"
-      ],
-      [
-        "!=",
-        "mode",
-        "simple_select"
-      ]
+      ["==", "$type", "Point"],
+      ["==", "meta", "vertex"],
+      ["!=", "mode", "simple_select"]
     ],
     "paint": {
       "circle-radius": [
         "case",
-        [
-          "==",
-          [
-            "get",
-            "active"
-          ],
-          "true"
-        ],
+        ["==", ["get", "active"], "true"],
         5,
         3
       ],
       "circle-color": "#fbb03b"
     },
-    "source": "mapbox-gl-draw-cold"
+    "source": "mapbox-gl-draw"
   },
   {
-    "id": "gl-draw-midpoint.cold",
+    "id": "gl-draw-midpoint",
     "type": "circle",
     "filter": [
       "all",
-      [
-        "==",
-        "meta",
-        "midpoint"
-      ]
+      ["==", "meta", "midpoint"]
     ],
     "paint": {
       "circle-radius": 3,
       "circle-color": "#fbb03b"
     },
-    "source": "mapbox-gl-draw-cold"
-  },
-  {
-    "id": "gl-draw-polygon-fill.hot",
-    "type": "fill",
-    "filter": [
-      "all",
-      [
-        "==",
-        "$type",
-        "Polygon"
-      ]
-    ],
-    "paint": {
-      "fill-color": [
-        "case",
-        [
-          "==",
-          [
-            "get",
-            "active"
-          ],
-          "true"
-        ],
-        "#fbb03b",
-        "#3bb2d0"
-      ],
-      "fill-opacity": 0.1
-    },
-    "source": "mapbox-gl-draw-hot"
-  },
-  {
-    "id": "gl-draw-lines.hot",
-    "type": "line",
-    "filter": [
-      "any",
-      [
-        "==",
-        "$type",
-        "LineString"
-      ],
-      [
-        "==",
-        "$type",
-        "Polygon"
-      ]
-    ],
-    "layout": {
-      "line-cap": "round",
-      "line-join": "round"
-    },
-    "paint": {
-      "line-color": [
-        "case",
-        [
-          "==",
-          [
-            "get",
-            "active"
-          ],
-          "true"
-        ],
-        "#fbb03b",
-        "#3bb2d0"
-      ],
-      "line-dasharray": [
-        "case",
-        [
-          "==",
-          [
-            "get",
-            "active"
-          ],
-          "true"
-        ],
-        [
-          0.2,
-          2
-        ],
-        [
-          2,
-          0
-        ]
-      ],
-      "line-width": 2
-    },
-    "source": "mapbox-gl-draw-hot"
-  },
-  {
-    "id": "gl-draw-point-outer.hot",
-    "type": "circle",
-    "filter": [
-      "all",
-      [
-        "==",
-        "$type",
-        "Point"
-      ],
-      [
-        "==",
-        "meta",
-        "feature"
-      ]
-    ],
-    "paint": {
-      "circle-radius": [
-        "case",
-        [
-          "==",
-          [
-            "get",
-            "active"
-          ],
-          "true"
-        ],
-        7,
-        5
-      ],
-      "circle-color": "#fff"
-    },
-    "source": "mapbox-gl-draw-hot"
-  },
-  {
-    "id": "gl-draw-point-inner.hot",
-    "type": "circle",
-    "filter": [
-      "all",
-      [
-        "==",
-        "$type",
-        "Point"
-      ],
-      [
-        "==",
-        "meta",
-        "feature"
-      ]
-    ],
-    "paint": {
-      "circle-radius": [
-        "case",
-        [
-          "==",
-          [
-            "get",
-            "active"
-          ],
-          "true"
-        ],
-        5,
-        3
-      ],
-      "circle-color": [
-        "case",
-        [
-          "==",
-          [
-            "get",
-            "active"
-          ],
-          "true"
-        ],
-        "#fbb03b",
-        "#3bb2d0"
-      ]
-    },
-    "source": "mapbox-gl-draw-hot"
-  },
-  {
-    "id": "gl-draw-vertex-outer.hot",
-    "type": "circle",
-    "filter": [
-      "all",
-      [
-        "==",
-        "$type",
-        "Point"
-      ],
-      [
-        "==",
-        "meta",
-        "vertex"
-      ],
-      [
-        "!=",
-        "mode",
-        "simple_select"
-      ]
-    ],
-    "paint": {
-      "circle-radius": [
-        "case",
-        [
-          "==",
-          [
-            "get",
-            "active"
-          ],
-          "true"
-        ],
-        7,
-        5
-      ],
-      "circle-color": "#fff"
-    },
-    "source": "mapbox-gl-draw-hot"
-  },
-  {
-    "id": "gl-draw-vertex-inner.hot",
-    "type": "circle",
-    "filter": [
-      "all",
-      [
-        "==",
-        "$type",
-        "Point"
-      ],
-      [
-        "==",
-        "meta",
-        "vertex"
-      ],
-      [
-        "!=",
-        "mode",
-        "simple_select"
-      ]
-    ],
-    "paint": {
-      "circle-radius": [
-        "case",
-        [
-          "==",
-          [
-            "get",
-            "active"
-          ],
-          "true"
-        ],
-        5,
-        3
-      ],
-      "circle-color": "#fbb03b"
-    },
-    "source": "mapbox-gl-draw-hot"
-  },
-  {
-    "id": "gl-draw-midpoint.hot",
-    "type": "circle",
-    "filter": [
-      "all",
-      [
-        "==",
-        "meta",
-        "midpoint"
-      ]
-    ],
-    "paint": {
-      "circle-radius": 3,
-      "circle-color": "#fbb03b"
-    },
-    "source": "mapbox-gl-draw-hot"
+    "source": "mapbox-gl-draw"
   }
 ]

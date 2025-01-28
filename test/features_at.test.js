@@ -10,16 +10,7 @@ import setupOptions from '../src/options.js';
  */
 function addLayers(ctx) {
   // drawn features style
-  ctx.map.addSource(Constants.sources.COLD, {
-    data: {
-      type: Constants.geojsonTypes.FEATURE_COLLECTION,
-      features: []
-    },
-    type: 'geojson'
-  });
-
-  // hot features style
-  ctx.map.addSource(Constants.sources.HOT, {
+  ctx.map.addSource(Constants.source, {
     data: {
       type: Constants.geojsonTypes.FEATURE_COLLECTION,
       features: [{

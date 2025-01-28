@@ -15,10 +15,7 @@ export const classes = {
   BOX_SELECT: 'mapbox-gl-draw_boxselect'
 };
 
-export const sources = {
-  HOT: 'mapbox-gl-draw-hot',
-  COLD: 'mapbox-gl-draw-cold'
-};
+export const source = 'mapbox-gl-draw';
 
 export const cursors = {
   ADD: 'add',

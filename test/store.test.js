@@ -32,10 +32,7 @@ test('Store constructor and public API', () => {
   const store = new Store(ctx);
 
   // instance members
-  assert.deepEqual(store.sources, {
-    hot: [],
-    cold: []
-  }, 'exposes store.sources');
+  assert.deepEqual(store.source, [], 'exposes store.sources');
   assert.equal(store.ctx, ctx, 'exposes store.ctx');
   assert.equal(store.ctx.map, map, 'exposes store.ctx.map');
   assert.equal(store.isDirty, false, 'exposes store.isDirty');

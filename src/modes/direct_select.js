@@ -106,8 +106,9 @@ DirectSelect.clickNoTarget = function () {
   this.changeMode(Constants.modes.SIMPLE_SELECT);
 };
 
-DirectSelect.clickInactive = function () {
-  this.changeMode(Constants.modes.SIMPLE_SELECT);
+DirectSelect.clickInactive = function (state, e) {
+  const featureId = e.featureTarget.properties.id;
+  this.changeMode(Constants.modes.SIMPLE_SELECT, { featureIds: [featureId] });
 };
 
 DirectSelect.clickActiveFeature = function (state) {
@@ -189,12 +190,12 @@ DirectSelect.onTrash = function(state) {
 
 DirectSelect.onMouseMove = function(state, e) {
   // On mousemove that is not a drag, stop vertex movement.
-  const isFeature = isActiveFeature(e);
   const onVertex = isVertex(e);
   const isMidPoint = isMidpoint(e);
   const noCoords = state.selectedCoordPaths.length === 0;
-  if (isFeature && noCoords) this.updateUIClasses({ mouse: Constants.cursors.MOVE });
+  if (isActiveFeature(e) && noCoords) this.updateUIClasses({ mouse: Constants.cursors.MOVE });
   else if (onVertex && !noCoords) this.updateUIClasses({ mouse: Constants.cursors.MOVE });
+  else if (isInactiveFeature(e)) this.updateUIClasses({ mouse: Constants.cursors.POINTER });
   else this.updateUIClasses({ mouse: Constants.cursors.NONE });
 
   const isDraggableItem = onVertex || isFeature || isMidPoint;

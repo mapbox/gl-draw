@@ -95,10 +95,10 @@ ModeInterface.prototype.deselect = function(id) {
 /**
  * Delete a feature from draw
  * @name this.deleteFeature
- * @param {String} id - a feature id
+ * @param {string | Array<string>} featureIds
  */
-ModeInterface.prototype.deleteFeature = function(id, opts = {}) {
-  return this._ctx.store.delete(id, opts);
+ModeInterface.prototype.deleteFeature = function(featureIds, opts = {}) {
+  return this._ctx.store.delete(featureIds, opts);
 };
 
 /**

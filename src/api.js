@@ -196,5 +196,11 @@ export default function(ctx, api) {
     return api;
   };
 
+  api.setControls = function(controls) {
+    ctx.options.controls = controls;
+    ctx.ui.removeButtons();
+    ctx.ui.addButtons();
+  };
+
   return api;
 }

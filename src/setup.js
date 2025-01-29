@@ -5,7 +5,7 @@ import * as Constants from './constants.js';
 
 export default function(ctx) {
 
-  let controlContainer = null;
+
   let mapLoadedInterval = null;
 
   const setup = {
@@ -24,8 +24,8 @@ export default function(ctx) {
       ctx.container = null;
       ctx.store = null;
 
-      if (controlContainer && controlContainer.parentNode) controlContainer.parentNode.removeChild(controlContainer);
-      controlContainer = null;
+      if (ctx.controlContainer && ctx.controlContainer.parentNode) ctx.controlContainer.parentNode.removeChild(ctx.controlContainer);
+      ctx.controlContainer = null;
 
       return this;
     },
@@ -44,7 +44,7 @@ export default function(ctx) {
       ctx.store = new Store(ctx);
 
 
-      controlContainer = ctx.ui.addButtons();
+      ctx.controlContainer = ctx.ui.addButtons();
 
       if (ctx.options.boxSelect) {
         ctx.boxZoomInitial = map.boxZoom.isEnabled();
@@ -67,7 +67,7 @@ export default function(ctx) {
       }
 
       ctx.events.start();
-      return controlContainer;
+      return ctx.controlContainer;
     },
     addLayers() {
       // drawn features style

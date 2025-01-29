@@ -51,6 +51,7 @@ DirectSelect.stopDragging = function(state) {
 DirectSelect.onVertex = function (state, e) {
   this.startDragging(state, e);
   const about = e.featureTarget.properties;
+  if (typeof about.coord_path !== 'string') about.coord_path = String(about.coord_path);
   const selectedIndex = state.selectedCoordPaths.indexOf(about.coord_path);
   if (!isShiftDown(e) && selectedIndex === -1) {
     state.selectedCoordPaths = [about.coord_path];

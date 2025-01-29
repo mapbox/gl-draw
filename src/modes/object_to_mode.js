@@ -58,10 +58,14 @@ export default function(modeObject) {
         mode.onTrash(state);
       },
       combineFeatures() {
-        mode.onCombineFeatures(state);
+        if (typeof mode.onCombineFeatures === 'function') {
+          mode.onCombineFeatures(state);
+        }
       },
       uncombineFeatures() {
-        mode.onUncombineFeatures(state);
+        if (typeof mode.onUncombineFeatures === 'function') {
+          mode.onUncombineFeatures(state);
+        }
       },
       render(geojson, push) {
         mode.toDisplayFeatures(state, geojson, push);

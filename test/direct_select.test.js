@@ -294,5 +294,30 @@ test('direct_select', async (t) => {
     await cleanUp();
   });
 
+  t.test('direct_select - fire a selectionchange with the point provided in the coordPath', st => {
+    map.fire.reset();
+    const [lineId] = Draw.add(getGeoJSON('line'));
+
+    Draw.changeMode(Constants.modes.DIRECT_SELECT, {
+      featureId: lineId,
+      coordPath: '0'
+    });
+
+    afterNextRender(() => {
+      const [selectionArgs] = getFireArgs().filter(arg => arg[0] === Constants.events.SELECTION_CHANGE);
+      st.ok(selectionArgs, 'should have fired a selectionchange event');
+
+      if (selectionArgs) {
+        const [selectedFeature] = selectionArgs[1].features;
+        st.ok(selectedFeature && selectedFeature.id === lineId, 'should have selected the provided line');
+
+        const [selectedPoint] = selectionArgs[1].points;
+        st.deepEqual(selectedPoint.geometry.coordinates, selectedFeature.geometry.coordinates[0], 'should have selected the coordinate under the path');
+      }
+
+      cleanUp(() => st.end());
+    });
+  });
+
   document.body.removeChild(mapContainer);
 });

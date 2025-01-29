@@ -139,8 +139,8 @@ DirectSelect.onSetup = function(opts) {
     selectedCoordPaths: opts.coordPath ? [opts.coordPath] : [],
   };
 
-  this.setSelectedCoordinates(this.pathsToCoordinates(featureId, state.selectedCoordPaths));
   this.setSelected(featureId);
+  this.setSelectedCoordinates(this.pathsToCoordinates(featureId, state.selectedCoordPaths));
   doubleClickZoom.disable(this);
 
   this.setActionableState({
